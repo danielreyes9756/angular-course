@@ -1,10 +1,18 @@
-<div class="course-card">
-
+<div class="course-card" *ngIf="course"
+    [ngClass]="cardClasses()">
+<!-- Adding on course-card [ngStyles]="cardStyles" and removing img and ng-template #noImage -->
+<!-- Images are posted as background images -->
     <div class="course-title">
-        {{course.description}}
+        {{ cardIndex + ' ' + course.description }}
     </div>
 
-    <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+    <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
+        [src]="course.iconUrl">
+
+    <ng-template #noImage>
+        <p>No image</p>
+    </ng-template>
+    
 
     <div class="course-description">
         {{course.longDescription}}
