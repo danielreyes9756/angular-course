@@ -1,15 +1,32 @@
 <div class="top-menu">
 
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+  <img class="logo"
+       src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
 </div>
 
+<h1>{{title | titlecase}}</h1>
+<p>all at {{price | currency }}</p>
+<div class="demo">{{ startDate | date: 'MM/dd/yyyy'}}</div>
 
 <div class="courses">
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourses"></course-card>
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourses"></course-card>
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourses"></course-card>
+  <!--
+  <course-card
+      *ngFor="let course of courses; index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [class.is-first]="isFirst"
+      [class.is-last]="isLast"
+      [class.is-even]="isEven"
+      [class.is-odd]="isOdd"
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course"
+      [cardIndex]="i+1">
+  </course-card>
+  -->
+  <course-card
+      *ngFor="let course of courses | slice: 0:2; index as i"
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course"
+      [cardIndex]="i+1">
+  </course-card>
+
 </div>
-
-

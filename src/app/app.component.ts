@@ -9,9 +9,13 @@ import { Course } from './model/course';
 })
 export class AppComponent {
 
-  coreCourses = COURSES[0];
-  rxjsCourses = COURSES[1];
-  ngrxCourses = COURSES[2];
+  courses = COURSES;
+  
+  title = 'angular courses';
+
+  startDate = new Date(2000, 0, 1);
+
+  price = 9.99;
 
   onCourseSelected(course: Course) {
     console.log("Hola", course)
